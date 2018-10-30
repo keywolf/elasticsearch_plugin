@@ -831,7 +831,7 @@ void elasticsearch_plugin_impl::_process_accepted_transaction( const chain::tran
    trans_doc("accepted", t->accepted);
    trans_doc("implicit", t->implicit);
    trans_doc("scheduled", t->scheduled);
-   trans_doc("createdAt", now.count());
+   trans_doc("createAt", now.count());
 
    doc("doc", trans_doc);
    doc("doc_as_upsert", true);
@@ -920,7 +920,7 @@ void elasticsearch_plugin_impl::_process_applied_transaction( const chain::trans
       fc::mutable_variant_object action_traces_doc;
       chain::base_action_trace &base = atrace.get();
       fc::from_variant( abi_deserializer->to_variant_with_abi( base ), action_traces_doc );
-      action_traces_doc("createdAt", now.count());
+      action_traces_doc("createAt", now.count());
       actions_vec.push_back( std::move(action_traces_doc) );
    }
 
