@@ -740,16 +740,9 @@ void elasticsearch_plugin_impl::_process_accepted_transaction( chain::transactio
             signing_keys = trx.get_signature_keys( *chain_id, false, false );
          }
 
-<<<<<<< HEAD
-   trans_doc("accepted", t->accepted);
-   trans_doc("implicit", t->implicit);
-   trans_doc("scheduled", t->scheduled);
-   trans_doc("createAt", now.count());
-=======
          if( !signing_keys.is_null() ) {
             trans_doc("signing_keys", signing_keys);
          }
->>>>>>> c79a87815a0accf440b40fcbf5fbbe0b6391aa91
 
          trans_doc("accepted", t->accepted);
          trans_doc("implicit", t->implicit);
@@ -903,16 +896,6 @@ void elasticsearch_plugin_impl::_process_irreversible_block(chain::block_state_p
             fc::mutable_variant_object doc;
             fc::mutable_variant_object block_state_doc;
 
-<<<<<<< HEAD
-   std::vector<fc::variant> actions_vec;
-   for ( auto& atrace : base_action_traces) {
-      fc::mutable_variant_object action_traces_doc;
-      chain::base_action_trace &base = atrace.get();
-      fc::from_variant( abi_deserializer->to_variant_with_abi( base ), action_traces_doc );
-      action_traces_doc("createAt", now.count());
-      actions_vec.push_back( std::move(action_traces_doc) );
-   }
-=======
             block_state_doc("block_num", static_cast<int32_t>(block_num));
             block_state_doc("block_id", block_id_str);
             block_state_doc("block_header_state", bs);
@@ -980,7 +963,6 @@ void elasticsearch_plugin_impl::_process_irreversible_block(chain::block_state_p
                   const auto& id = receipt.trx.get<transaction_id_type>();
                   trx_id_str = id.str();
                }
->>>>>>> c79a87815a0accf440b40fcbf5fbbe0b6391aa91
 
                fc::mutable_variant_object trans_doc;
                fc::mutable_variant_object doc;
