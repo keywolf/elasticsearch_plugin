@@ -182,53 +182,57 @@ static const std::string action_traces_mapping = R"(
                     "enabled": false
                 }, 
                 "act": {
-                    "name": {
-                        "type": "keyword"
-                    }, 
-                    "authorization": {
-                        "type": "nested", 
-                        "properties": {
-                            "actor": {
-                                "type": "keyword"
-                            }, 
-                            "permission": {
-                                "type": "keyword"
+                    "properties": {
+                        "name": {
+                            "type": "keyword"
+                        }, 
+                        "authorization": {
+                            "type": "nested", 
+                            "properties": {
+                                "actor": {
+                                    "type": "keyword"
+                                }, 
+                                "permission": {
+                                    "type": "keyword"
+                                }
                             }
-                        }
-                    }, 
-                    "account": {
-                        "type": "keyword"
-                    }, 
-                    "hex_data": {
-                        "enabled": false
-                    }, 
-                    "data": {
-                        "from": {
-                            "type": "keyword"
-                        }, 
-                        "to": {
-                            "type": "keyword"
-                        }, 
-                        "quantity": {
-                            "type": "text"
-                        }, 
-                        "memo": {
-                            "type": "text"
-                        }, 
-                        "vmtype": {
-                            "type": "keyword"
-                        }, 
-                        "vmversion": {
-                            "type": "keyword"
-                        }, 
-                        "code": {
-                            "enabled": false
-                        }, 
-                        "abi": {
-                            "enabled": false
                         }, 
                         "account": {
                             "type": "keyword"
+                        }, 
+                        "hex_data": {
+                            "enabled": false
+                        }, 
+                        "data": {
+                            "properties": {
+                                "from": {
+                                    "type": "keyword"
+                                }, 
+                                "to": {
+                                    "type": "keyword"
+                                }, 
+                                "quantity": {
+                                    "type": "text"
+                                }, 
+                                "memo": {
+                                    "type": "text"
+                                }, 
+                                "vmtype": {
+                                    "type": "keyword"
+                                }, 
+                                "vmversion": {
+                                    "type": "keyword"
+                                }, 
+                                "code": {
+                                    "enabled": false
+                                }, 
+                                "abi": {
+                                    "enabled": false
+                                }, 
+                                "account": {
+                                    "type": "keyword"
+                                }
+                            }
                         }
                     }
                 }, 
