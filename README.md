@@ -12,14 +12,14 @@ Detail: [Benchmark](./benchmark/benchmark.md)
 
 |                      | elapse(s) | speed(b/s) |
 | -------------------- |:---------:|:----------:|
-| elasticsearch_plugin | 548       | 18.25      |
+| elasticsearch_plugin | 266       | 37.59      |
 | mongo_db_plugin      | 694       | 14.41      |
 
 ### Replay 100000 Block
 
 |                      | elapse(s) | speed(b/s) |
 | -------------------- |:---------:|:----------:|
-| elasticsearch_plugin | 663       | 150.83     |
+| elasticsearch_plugin | 354       | 282.49     |
 | mongo_db_plugin      | 987       | 101.32     |
 
 ## Performance Tuning
@@ -38,8 +38,8 @@ In the benchmark, `elasticsearch_plugin` is running with default config. For pro
 
 ```text
   --elastic-abi-cache-size arg (=2048)           The maximum size of the abi cache for serializing data.
-  --elastic-thread-pool-size arg (=4)            The maximum size of the abi cache for.
-  --elastic-bulker-pool-size arg (=2)            The size of the data processing thread.
+  --elastic-thread-pool-size arg (=4)            The size of the data processing thread pool.
+  --elastic-bulker-pool-size arg (=2)            The size of the elasticsearch bulker pool.
   --elastic-bulk-size arg (=5)                   The size(megabytes) of the each bulk request.
 ```
 
@@ -67,6 +67,8 @@ sudo cp "lib/libcpr.so" "/usr/local/lib/libcpr.so"
 
 ```bash
 git clone https://github.com/EOSLaoMao/elasticsearch_plugin.git plugins/elasticsearch_plugin
+cd plugins/elasticsearch_plugin
+git submodule update --init --recursive
 ```
 
 2. Add subdirectory to `plugins/CMakeLists.txt`.
@@ -145,6 +147,4 @@ Config Options for eosio::elasticsearch_plugin:
 
 ## TODO
 
-- [x] Imporve filer-on and filer-out feature, see: [https://github.com/EOSIO/eos/pull/5670](https://github.com/EOSIO/eos/pull/5670)
 - [ ] Due to `libcurl` [100-continue feature](https://curl.haxx.se/mail/lib-2017-07/0013.html), consider replace [EOSLaoMao/elasticlient](https://github.com/EOSLaoMao/elasticlient) with other simple http client like [https://cpp-netlib.org/#](https://cpp-netlib.org/#)
-- [ ] Improve multi-thread efficiency.
